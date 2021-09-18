@@ -12,12 +12,11 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author joann
  */
-public class CreateLinkedList  implements Runnable{
-         CreateLinkedList(){
-    }
-    public void run(){  
-        int arrayLength = 200;
-       // int arrayLength = 2000000000;
+public class CreateLinkedList {
+
+    public void createList(){  
+//        int arrayLength = 200000;
+        int arrayLength = 2000000000;
         Long startTime;
         Long endTime;
         int mySum=0;
@@ -28,22 +27,21 @@ public class CreateLinkedList  implements Runnable{
              for (int i=0;i<arrayLength;i++){
                  myRandom = ThreadLocalRandom.current().nextInt(0,10);
                  ll.add(myRandom);
-                 mySum+=myRandom;           
-                Thread.sleep(1000);  }
+                 mySum+=myRandom;  }  
             endTime = System.nanoTime();
             long processTime = endTime-startTime;
-            System.out.println("Finished creating Linked List" + processTime);
+            System.out.println("Finished creating Linked List: " + processTime);
         
             startTime = System.nanoTime();
              for (int i=0;i<ll.size();i++){
                ll.remove(i);
              }
-        
+                 
             endTime = System.nanoTime();
             processTime = endTime-startTime;
-            System.out.println("Finished deleting Linked List" + processTime);
+            System.out.println("Finished deleting Linked List: " + processTime);
         
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         

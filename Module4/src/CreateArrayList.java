@@ -14,12 +14,11 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author joann
  */
-public class CreateArrayList implements Runnable {
+public class CreateArrayList {
   
-     CreateArrayList(){
-    }
-    public void run(){  
-        int arrayLength = 200;
+    public void createArray(){  
+        int arrayLength = 2000000000;
+//        int arrayLength = 200000;
         Long startTime;
         Long endTime;
         int mySum=0;
@@ -31,22 +30,20 @@ public class CreateArrayList implements Runnable {
              for (int i=0;i<arrayLength;i++){
                  myRandom = ThreadLocalRandom.current().nextInt(0,10);
                  al.add(myRandom);
-                 mySum+=myRandom;           
-                Thread.sleep(1000);  }
+                 mySum+=myRandom;   } 
             endTime = System.nanoTime();
             long processTime = endTime-startTime;
-        System.out.println("Finished adding the ArrayList" + processTime);
+        System.out.println("Finished adding the ArrayList: " + processTime);
         //Now remove each number from the arrayList
             startTime = System.nanoTime();
         
              for (int i=0;i<al.size();i++){
-                al.remove(i);                
-                Thread.sleep(1000);  
-             }
+                al.remove(i);       
+             }           
          endTime = System.nanoTime();
         processTime = endTime-startTime;
-        System.out.println("Finished deleting the ArrayList" + processTime);
-        } catch (InterruptedException e) {
+        System.out.println("Finished deleting the ArrayList: " + processTime);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         

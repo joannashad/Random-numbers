@@ -12,11 +12,11 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author joann
  */
-public class CreateHashTable implements Runnable {
-          CreateHashTable(){
-    }
-    public void run(){  
-        int arrayLength = 200;
+public class CreateHashTable{
+
+    public void createList(){  
+        int arrayLength = 2000000000;
+//        int arrayLength = 200000;
         Long startTime;
         Long endTime;
         int mySum=0;
@@ -26,21 +26,20 @@ public class CreateHashTable implements Runnable {
             int myRandom = 0;
              for (int i=0;i<arrayLength;i++){
                  myRandom = ThreadLocalRandom.current().nextInt(0,10);
-                 ht1.put(i,myRandom);         
-                Thread.sleep(1000);  }
+                 ht1.put(i,myRandom);  }
             endTime = System.nanoTime();
             long processTime = endTime-startTime;
-        System.out.println("Finished Hash Table" + processTime);
+        System.out.println("Finished adding Hash Table: " + processTime);
 
             startTime = System.nanoTime();
              for (int i=0;i<ht1.size();i++){
                ht1.remove(i);
              }
-        
+               
             endTime = System.nanoTime();
             processTime = endTime-startTime;
-            System.out.println("Finished deleting Hash Table" + processTime);
-        } catch (InterruptedException e) {
+            System.out.println("Finished deleting Hash Table: " + processTime);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         

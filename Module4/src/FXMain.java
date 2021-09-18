@@ -51,28 +51,16 @@ public class FXMain extends Application {
         Label lblResults = new Label();
         
         btn1.setOnAction(new EventHandler<ActionEvent>() {
-        int nThreads = 10000000;
+
             @Override
             public void handle(ActionEvent event) {
-                ExecutorService executor = Executors.newFixedThreadPool(nThreads);
+                
                 CreateArrayList ca1=new CreateArrayList(); 
-                executor.execute(ca1);
-                executor.shutdown();
-                // Wait until all threads are finish
-                while (!executor.isTerminated()) {
-
-                }
-                
-                ExecutorService executor2 = Executors.newFixedThreadPool(nThreads);
-                CreateHashTable cht=new CreateHashTable(); 
-                executor2.execute(cht);
-                executor2.shutdown();
-                
-                ExecutorService executor3 = Executors.newFixedThreadPool(nThreads);
+                ca1.createArray();
                 CreateLinkedList cll=new CreateLinkedList(); 
-                executor3.execute(cll);
-                executor3.shutdown();
-
+                cll.createList();
+                CreateHashTable cht=new CreateHashTable(); 
+                cht.createList();
         }});       
         
         Button btn2 = new Button();
@@ -82,14 +70,6 @@ public class FXMain extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-                ExecutorService executor = Executors.newFixedThreadPool(4);
-                CreateLinkedList cll=new CreateLinkedList(); 
-                executor.execute(cll);
-                executor.shutdown();
-                // Wait until all threads are finish
-                while (!executor.isTerminated()) {
-
-                }
 
             }
         });
@@ -102,16 +82,7 @@ public class FXMain extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-                ExecutorService executor = Executors.newFixedThreadPool(4);
-                CreateHashTable cht=new CreateHashTable(); 
-                executor.execute(cht);
-                executor.shutdown();
-                // Wait until all threads are finish
-                while (!executor.isTerminated()) {
-
-                }
-
-                System.out.println("\nFinished all threads");
+               
             }
         });
 
